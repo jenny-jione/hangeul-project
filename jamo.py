@@ -220,6 +220,17 @@ if __name__ == "__main__":
         print(''.join(result))
     except Exception as e:
         print(e)
+
+
+    res = []
+    for i in range(len(CHOSUNG_LIST)):
+        for j in range(len(JUNGSUNG_LIST)):
+            for k in range(len(JONGSUNG_LIST)):
+                code = BASE_CODE + CHOSUNG * i + JUNGSUNG * j + k
+                # print(chr(code))
+                res.append(chr(code))
+    
+    print(len(res))
         
 # TODO : 띄어쓰기도 되게 하기
 # 한영 섞여도 되게 하기
