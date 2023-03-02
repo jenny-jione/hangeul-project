@@ -138,7 +138,7 @@ def get_syllable(h_word):
 
 
 def get_double_char(char:str):
-    if len(char) < 2:
+    if len(char) != 2:
         return char
     c1, c2 = list(char)
     if c1 == 'ㄱ' and c2 == 'ㅅ':
@@ -205,21 +205,25 @@ def combine(chars: list):
     
 
 if __name__ == "__main__":
-    word = "dkssudgktpdyTkdwkdmaehehlqslekruqahdmaehehlqslekdhldnekruqwkdmaehehlqslekdPfmfemfausaksgek"
+    word = "bdlfgfdnltkaa"
+    word = "dbdbbddlfgfdnltkaa"
+    word = "dhh"
     print("input :", word)
     han_word = to_hangeul(word)
     print(han_word)
     syllables = get_syllable(han_word)
     print("syllables:", syllables)
     
-    result = []
-    try:
-        for syllable in syllables:
-            chars = get_cjj(syllable)
-            result.append(chr(combine(chars)))
-        print(''.join(result))
-    except Exception as e:
-        print(e)
+    # result = []
+    # try:
+    #     for syllable in syllables:
+    #         chars = get_cjj(syllable)
+    #         result.append(chr(combine(chars)))
+    #     print(''.join(result))
+    # except Exception as e:
+    #     print(e)
+        
+        
         
 # TODO : 띄어쓰기도 되게 하기
 # 한영 섞여도 되게 하기
