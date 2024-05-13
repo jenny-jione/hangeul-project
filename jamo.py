@@ -114,6 +114,11 @@ JONGSUNG_LIST = [
 BASE_CODE, CHOSUNG, JUNGSUNG = 44032, 588, 28
 
 
+# 키보드에 대응되는 영->한 변환값 리턴.
+"""
+input : 문자열 - 'dkssud'
+output: 문자열 - 'ㅇㅏㄴㄴㅕㅇ'
+"""
 def to_hangeul(word):
     h_word = ""
     for x in word:
@@ -121,6 +126,11 @@ def to_hangeul(word):
     return h_word
 
 
+# 음절을 구분하는 함수 - 결과값은 음절 단위로 구분된 리스트.
+"""
+input : 문자열 - 'ㅇㅏㄴㄴㅕㅇ'
+output: 리스트 - ['ㅇㅏㄴ', 'ㄴㅕㅇ']
+"""
 def get_syllable(h_word):
     result = []
     indices = []
@@ -137,6 +147,11 @@ def get_syllable(h_word):
     return result
 
 
+# 쌍자음으로 반환하는 함수
+"""
+input : 문자열 - 'ㄱㅅ'
+output: 문자열 - 'ㄳ' * 길이는 무조건 1
+"""
 def get_double_char(char:str):
     if len(char) < 2:
         return char
@@ -179,6 +194,14 @@ def get_double_char(char:str):
         return 'ㅢ'
 
 
+# 주어진 자음/모음 문자열을 초성/중성/종성 길이 3의 리스트로 반환하는 함수
+"""
+input : 문자열 - 'ㅇㅏㄴ'
+output: 리스트 - ['ㅇ', 'ㅏ', 'ㄴ']
+
+input : 문자열 - 'ㄷㅗㅣㅂ'
+output: 리스트 - ['ㄷ', 'ㅚ', 'ㅂ']
+"""
 def get_cjj(syllable):
     try:
         ji = []
@@ -196,7 +219,12 @@ def get_cjj(syllable):
     except Exception as e:
         print('Unexcepted Exception:', e)
     
-    
+
+# 초성/중성/종성을 합쳐서 하나의 글자에 해당되는 유니코드 값을 반환하는 함수
+"""
+input : 문자열 리스트 - ['ㅁ', 'ㅏ', 'ㄶ']
+output: 유니코드 값 - 47566
+"""
 def combine(chars: list):
     char1_index = CHOSUNG_LIST.index(chars[0])
     char2_index = JUNGSUNG_LIST.index(chars[1])
